@@ -1,3 +1,5 @@
+import "./services/firebase";
+
 const App = () => {
   return (
     <div className="App">
