@@ -1,11 +1,7 @@
-import "./services/firebase";
+import { Home } from "./pages/Home";
 
 const App = () => {
-  return (
-    <div className="App">
-      <h1>elias alexandre</h1>
-    </div>
-  );
+  return <Home />;
 };
 
 export default App;
