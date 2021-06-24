@@ -1,19 +1,12 @@
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import googleIconImg from "../assets/google-icon.svg";
 import illustrationImg from "../assets/illustration.svg";
 import logoImg from "../assets/logo.svg";
 import { Button } from "../components/Button";
 
 import "../styles/auth.scss";
 
-const Home = () => {
-  const history = useHistory();
-
-  function navigateToNewRoom() {
-    history.push("/rooms/new");
-  }
-
+const NewRoom = () => {
   return (
     <div id="page-auth">
       <aside>
@@ -29,23 +22,19 @@ const Home = () => {
       <main>
         <div className="main-content">
           <img draggable={false} src={logoImg} alt="letmeask" />
-          <button
-            onClick={navigateToNewRoom}
-            className="create-room"
-            type="button"
-          >
-            <img draggable={false} src={googleIconImg} alt="Logo do Google" />
-            Crie sua sala com o Google
-          </button>
+          <h2>Criar uma nova sala</h2>
           <div className="separator">ou entre em uma outra sala</div>
           <form>
-            <input placeholder="Digite o código da sala" type="text" />
-            <Button type="submit">Entrar na sala</Button>
+            <input placeholder="Nome da sala" type="text" />
+            <Button type="submit">Criar sala</Button>
           </form>
+          <p>
+            Quer entrar em uma sala existente? <Link to="/">clique aqui</Link>
+          </p>
         </div>
       </main>
     </div>
   );
 };
 
-export { Home };
+export { NewRoom };
