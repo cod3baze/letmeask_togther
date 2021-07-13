@@ -1,17 +1,24 @@
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 import googleIconImg from "../assets/google-icon.svg";
 import illustrationImg from "../assets/illustration.svg";
 import logoImg from "../assets/logo.svg";
 import { Button } from "../components/Button";
+import { auth, firebase } from "../services/firebase";
 
 import "../styles/auth.scss";
 
 const Home = () => {
-  const history = useHistory();
+  // const history = useHistory();
 
-  function navigateToNewRoom() {
-    history.push("/rooms/new");
+  function handleCreateRoom() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    auth.signInWithPopup(provider).then((result) => {
+      console.log(`PROVIDED: ${result}`);
+    });
+
+    // history.push("/rooms/new");
   }
 
   return (
@@ -30,7 +37,7 @@ const Home = () => {
         <div className="main-content">
           <img draggable={false} src={logoImg} alt="letmeask" />
           <button
-            onClick={navigateToNewRoom}
+            onClick={handleCreateRoom}
             className="create-room"
             type="button"
           >
